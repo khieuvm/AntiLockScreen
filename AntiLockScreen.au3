@@ -51,17 +51,15 @@ TraySetClick(16) ; Show the tray menu when the mouse if hovered over the tray ic
 TraySetToolTip("AntiLockScreen")
 TraySetIcon("icon.ico")
 
-Send("{SCROLLLOCK off}")
-
 PressLock()
 
 Func PressLock()
 While True
-	If @HOUR < 18 OR @HOUR > 9 Then
+	If @HOUR < 18 AND @HOUR > 9 Then
 		If $lock = True Then
-			Send("{SCROLLLOCK}")
+			Send("{SCROLLLOCK on}")
 			Sleep(20)
-			Send("{SCROLLLOCK}")
+			Send("{SCROLLLOCK off}")
 		EndIf
 	EndIf
 	Sleep(20000)
